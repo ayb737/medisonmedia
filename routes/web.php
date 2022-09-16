@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+// use App\Http\Controllers\CountryController;
+use App\Http\Controllers as C;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,4 +28,8 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
+Route::get('countries/create', [C\CountryController::class, 'create']);
+Route::post('countries', [C\CountryController::class, 'store']);
+
+Route::get('/country', [C\CountryController::class, 'index']);
 require __DIR__.'/auth.php';
